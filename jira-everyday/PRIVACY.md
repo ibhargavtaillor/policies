@@ -1,7 +1,7 @@
 # Privacy Policy — Jira Everyday
 
 **Effective date:** July 4, 2026
-**Last updated:** July 8, 2026
+**Last updated:** July 11, 2026
 
 Jira Everyday ("the Extension") is a Chrome browser extension that adds small
 productivity enhancements to Jira Cloud boards. This policy explains what the
