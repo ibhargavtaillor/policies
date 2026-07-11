@@ -1,24 +1,29 @@
 # Privacy Policy — Jira Everyday
 
 **Effective date:** July 4, 2026
-**Last updated:** July 4, 2026
+**Last updated:** July 8, 2026
 
 Jira Everyday ("the Extension") is a Chrome browser extension that adds small
 productivity enhancements to Jira Cloud boards. This policy explains what the
 Extension does and does not do with your information.
 
-**Short version: Jira Everyday does not collect, store, transmit, sell, or share
-any personal data. Everything it does happens locally in your browser. There are
-no servers, no accounts, no analytics, and no tracking.**
+**Short version: Jira Everyday does not collect, store, sell, or share any
+personal data. It has no servers of its own, no accounts, no analytics, and no
+tracking. It runs in your browser and — for one feature — talks only to your own
+Jira instance using your existing session, never to any third-party server.**
 
 The Extension is an independent project and is **not affiliated with, endorsed
 by, or sponsored by Atlassian** or Jira.
 
 ## Information we collect
 
-**None.** The Extension does not collect or transmit any personal data,
-usage data, analytics, telemetry, or identifiers. It has no backend server and
-makes no network requests of its own.
+**None.** The Extension does not collect any personal data, usage data,
+analytics, telemetry, or identifiers, and it has no backend server of its own. It
+does not send your data to us or to any third party.
+
+To power one feature it may request data from **your own Jira instance** — see
+the "Jira API requests" section below. Those requests go only to your Jira site,
+authenticated by your existing session; their responses are used on your device.
 
 ## How the Extension works with data on your device
 
@@ -64,6 +69,25 @@ enabled, your Time in Status thresholds and colors, and your appearance
 You can clear these settings at any time by removing the Extension, or via your
 browser's extension storage controls.
 
+### 4. Jira API requests
+
+The "Time in Status" feature highlights issues that have stayed in a status too
+long. When your board already shows a "days in column" value, the Extension reads
+it from the page (no network). When it does not, the Extension asks **your own
+Jira instance** how long the issue has been in its current status by calling
+Jira's REST API (e.g. `/rest/api/3/search`) from the Jira page you are viewing.
+
+- These requests go **only to your Jira site** (the same `*.atlassian.net`
+  domain you are on) and are authenticated by **your existing Jira session**
+  (browser cookies). The Extension never uses, requests, or stores any password,
+  API token, or other credential.
+- Responses are used **on your device** to compute the number of days, and a
+  minimal result (the date an issue entered its status) is cached locally
+  (`chrome.storage.local`) to avoid repeat requests. **No issue data is sent to
+  the Extension's developer or any third party** — there is no such server.
+- If you are not signed in to Jira, or a request fails, the feature simply skips
+  highlighting; nothing breaks.
+
 ## Permissions and why they are needed
 
 - **`storage`** — to save your preferences (feature toggles, thresholds, colors,
@@ -87,9 +111,10 @@ transmitted, there is nothing else to retain or delete.
 
 ## Security
 
-The Extension performs no network transmission of your data and requests the
-minimum permissions necessary to function. Your settings remain within your
-browser's storage under your control.
+The Extension sends no data to us or to any third party, and requests the minimum
+permissions necessary to function. The only network requests it makes are to your
+own Jira instance, using your existing session (see "Jira API requests"). Your
+settings and cache remain within your browser's storage under your control.
 
 ## Children's privacy
 
